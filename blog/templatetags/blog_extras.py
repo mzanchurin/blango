@@ -5,6 +5,8 @@ from django.utils.safestring import mark_safe
 from django.utils.html import format_html
 from blog.models import Post
 
+import logging
+logger = logging.getLogger(__name__)
 
 user_model = get_user_model()
 register = template.Library()
@@ -78,5 +80,6 @@ def author_details_tag(context):
 
 @register.inclusion_tag("blog/post-list.html")
 def recent_posts(post):
+    logger.debug("Loaded %d recent posts for post %d", len(posts), post.pk)
     posts = Post.objects.exclude(pk=post.pk)[:5]
     return {"title": "Recent Posts", "posts": posts}    
