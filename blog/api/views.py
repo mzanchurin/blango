@@ -112,6 +112,7 @@ class PostViewSet(viewsets.ModelViewSet):
             )
 
         time_period_name = self.kwargs.get("period_name")
+        #self.request.GET.get('all')
 
         if not time_period_name:
             # no further filtering required
