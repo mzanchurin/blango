@@ -55,9 +55,6 @@ urlpatterns += [
         PostViewSet.as_view({"get": "list"}),
         name="posts-by-time",
     ),
-    path("jwt/", TokenObtainPairView.as_view(), name="jwt_obtain_pair"),
-    path("jwt/refresh/", TokenRefreshView.as_view(), name="jwt_refresh"),
-
 ]
 
 # urlpatterns = format_suffix_patterns(urlpatterns)
