@@ -7,6 +7,8 @@ from django.views.decorators.vary import vary_on_cookie, vary_on_headers
 from blog.forms import CommentForm
 from blog.models import Post
 import logging
+from django.urls import reverse
+
 
 logger = logging.getLogger(__name__)
 
@@ -52,4 +54,6 @@ def get_ip(request):
 
 
 def post_table(request):
-    return render(request, "blog/post-table.html")  
+    return render(
+        request, "blog/post-table.html", {"post_list_url": reverse("post-list")}
+    )
